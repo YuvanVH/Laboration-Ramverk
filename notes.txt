@@ -1,0 +1,3 @@
+Krav att uppfylla:
+1. En beräknad egenskap (computed)
+2. Custom events
