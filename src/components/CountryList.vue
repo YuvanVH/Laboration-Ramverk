@@ -1,7 +1,7 @@
 <!-- vite/my-project/src/components/CountryList.vue -->
 <!-- Komponent för lista över länder -->
 <template>
-  <div>
+  <div class="container">
     <h2>Country List</h2>
     <ul>
       <li v-for="country in countries" :key="country.countryCode">

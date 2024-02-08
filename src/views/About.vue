@@ -1,13 +1,20 @@
-<!-- <!-- vite/my-project/my-project/src/views/About.vue -->
 <template>
-  <div>
-    <h1>About Page</h1>
-    <!-- Kod för about-komponenten här -->
+  <div class="container">
+    <h1>About Us</h1>
+    <p>Welcome to our website! We are dedicated to providing you with the best holiday information available.</p>
+    <p>Our mission is to make it easy for you to find and plan your holidays, whether you're traveling locally or
+      internationally.</p>
+    <p>Feel free to explore our site and discover all the amazing holiday destinations and activities waiting for you!</p>
   </div>
+  <footer class="footer">
+    <div class="footerContainer">
+      <p>Copyright © GlobalHolidayTracker</p>
+    </div>
+  </footer>
 </template>
 
 <script>
 export default {
-  // About-komponentens definition här
+  name: 'About',
 };
 </script>

@@ -1,9 +1,14 @@
 <!-- vite/my-project/my-project/src/views/Search.vue -->
 <template>
-  <div>
+  <div class="container">
     <h1>Search Page</h1>
     <SearchHoliday />
   </div>
+  <footer class="footer">
+    <div class="footerContainer">
+      <p>Copyright © GlobalHolidayTracker</p>
+    </div>
+  </footer>
 </template>
 
 <script>

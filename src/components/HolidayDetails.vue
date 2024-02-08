@@ -1,6 +1,6 @@
 <!-- vite/my-project/my-project/src/components/HolidayDetails.vue -->
 <template>
-  <div>
+  <div class="container">
     <h2>Holiday - {{ holiday.localName }}</h2>
     <p>Date: {{ holiday.date }}</p>
     <p>Celebrated in: {{ countryName }} ({{ holiday.countryCode }})</p>
@@ -19,6 +19,11 @@
       <router-link :to="{ name: 'holidays', params: { countryCode: holiday.countryCode } }">Go back</router-link>
     </div>
   </div>
+  <footer class="footer">
+    <div class="footerContainer">
+      <p>Copyright © GlobalHolidayTracker</p>
+    </div>
+  </footer>
 </template>
 
 <script>

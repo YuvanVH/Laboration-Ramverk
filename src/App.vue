@@ -1,11 +1,16 @@
-<!-- vite/my-project/my-project/src/App.vue -->
+<!-- App.vue -->
 <template>
-  <div>
-    <router-link to="/">Home</router-link>
-    <router-link to="/about">About</router-link>
-    <router-link to="/search">Search</router-link>
+  <div class="containerMeny">
+    <router-link class="menyItem" to="/">Home</router-link>
+    <router-link class="menyItem" to="/about">About</router-link>
+    <router-link class="menyItem" to="/search">Search</router-link>
     <router-view></router-view>
   </div>
+  <footer class="footer">
+    <div class="footerContainer">
+      <p>Copyright © GlobalHolidayTracker</p>
+    </div>
+  </footer>
 </template>
 
 <script>
@@ -21,3 +26,8 @@ export default {
   },
 };
 </script>
+
+<style>
+/* Inkludera globala stilar */
+@import "../src/style.css";
+</style>

@@ -1,6 +1,6 @@
 <!-- vite/my-project/my-project/src/components/SearchHoliday.vue -->
 <template>
-  <div>
+  <div class="container">
     <!-- Filter för länder -->
     <div>
       <h3>Filter Countries:</h3>
@@ -8,6 +8,8 @@
         <input type="checkbox" v-model="selectedCountries" :value="country.countryCode" @change="fetchHolidays" />
         {{ country.name }}
       </label>
+      <button @click="selectAllCountries">Select All</button> <!-- Select All knapp -->
+      <button @click="deselectAllCountries">Deselect All</button> <!-- Deselect All knapp -->
     </div>
 
     <!-- Filter för år -->
@@ -29,6 +31,7 @@
         </router-link>
       </li>
     </ul>
+
   </div>
 </template>
 
@@ -86,6 +89,14 @@ export default {
         }
       }
     },
+    selectAllCountries() {
+      this.selectedCountries = this.countries.map(country => country.countryCode);
+      this.fetchHolidays(); // Hämta helgdagar när alla länder är valda
+    },
+    deselectAllCountries() {
+      this.selectedCountries = [];
+      this.fetchHolidays(); // Hämta helgdagar när inga länder är valda
+    }
   },
 };
 </script>

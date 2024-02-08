@@ -1,7 +1,6 @@
-div {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid #ddd;
+/* generell style  */
+body {
+  margin: 0;
 }
 
 p {
@@ -11,4 +10,43 @@ p {
 input {
   padding: 10px;
   margin-top: 10px;
+}
+
+.containerMenu {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-evenly;
+  margin-bottom: 0px;
+}
+
+.menyItem {
+  margin: 20px;
+  padding: 10px;
+}
+
+.container {
+  margin: 20px;
+}
+
+#app {
+  margin-top: 20px;
+  min-height: 100vh;
+  /* Minst 100% av fönsterhöjden */
+  position: relative;
+  margin-bottom: 0px;
+}
+
+.footer {
+  position: absolute;
+  /* Absolut position för att placera footern längst ned */
+  bottom: 0;
+  /* Placera footern längst ned */
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+}
+
+.footerContainer {
+  padding: 20px;
+  /* Lägg till lite utfyllnad inuti footern för utseendeändamål */
 }

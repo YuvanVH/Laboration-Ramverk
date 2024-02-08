@@ -1,6 +1,6 @@
 <!-- vite/my-project/my-project/src/components/HolidayList.vue -->
 <template>
-  <div>
+  <div class="container">
     <h2>Holidays in {{ countryName }} ({{ countryCode }})</h2>
     <ul>
       <li v-for="holiday in holidays" :key="holiday.date">
@@ -13,6 +13,11 @@
       <router-link :to="{ name: 'CountryList' }">Go back</router-link>
     </div>
   </div>
+  <footer class="footer">
+    <div class="footerContainer">
+      <p>Copyright © GlobalHolidayTracker</p>
+    </div>
+  </footer>
 </template>
 
 <script>
