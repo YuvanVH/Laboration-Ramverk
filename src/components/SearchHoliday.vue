@@ -24,7 +24,9 @@
     <!-- Lista med resultat -->
     <ul>
       <li v-for="holiday in filteredHolidays" :key="holiday.date">
-        ({{ countryCode }}) {{ holiday.name }} ({{ holiday.localName }}) - {{ holiday.date }}
+        <router-link :to="{ name: 'HolidayDetails', params: { countryCode: holiday.countryCode, date: holiday.date } }">
+          ({{ holiday.countryCode }}) {{ holiday.name }} ({{ holiday.localName }}) - {{ holiday.date }}
+        </router-link>
       </li>
     </ul>
   </div>
@@ -41,9 +43,15 @@ export default {
       availableYears: [], // Alla tillgängliga år
       selectedYear: new Date().getFullYear(), // Valt år
       holidays: [], // Alla helgdagar
-      filteredHolidays: [], // Filtrerade helgdagar
       searchInput: '', // Användarens sökning
     };
+  },
+  computed: {
+    filteredHolidays() {
+      return this.holidays.filter(holiday =>
+        holiday.name.toLowerCase().includes(this.searchInput.toLowerCase())
+      );
+    }
   },
   async mounted() {
     // Hämta tillgängliga länder
@@ -54,7 +62,7 @@ export default {
       console.error('Error fetching available countries:', error);
     }
 
-    // Hämta tillgängliga år
+    // Hämta tillgängliga år alternativ, 24-29
     this.availableYears = Array.from({ length: 6 }, (_, index) => new Date().getFullYear() + index);
 
     // Lyssna på ändringar i valda länder och år samt sökning och filtrera helgdagar
@@ -72,18 +80,11 @@ export default {
       for (const countryCode of this.selectedCountries) {
         try {
           const response = await axios.get(`https://date.nager.at/api/v3/publicholidays/${this.selectedYear}/${countryCode}`);
-          this.holidays.push(...response.data);
+          this.holidays.push(...response.data.map(holiday => ({ ...holiday, countryCode })));
         } catch (error) {
           console.error(`Error fetching holidays for country ${countryCode}:`, error);
         }
       }
-      this.filterHolidays();
-    },
-    filterHolidays() {
-      // Filtrera helgdagar baserat på sökning
-      this.filteredHolidays = this.holidays.filter(holiday =>
-        holiday.name.toLowerCase().includes(this.searchInput.toLowerCase())
-      );
     },
   },
 };
