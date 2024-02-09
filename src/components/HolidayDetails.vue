@@ -1,29 +1,25 @@
 <!-- vite/my-project/my-project/src/components/HolidayDetails.vue -->
 <template>
   <div class="container">
-    <h2>Holiday - {{ holiday.localName }}</h2>
+    <h1>Holiday - {{ holiday.localName }}</h1>
+    <img :src="'https://flagsapi.com/' + countryCode + '/flat/64.png'" alt="Flag of the country">
     <p>Date: {{ holiday.date }}</p>
     <p>Celebrated in: {{ countryName }} ({{ holiday.countryCode }})</p>
     <p>English name: {{ holiday.name }}</p>
-    <p>Type: {{ holiday.types }}</p>
+    <p>Type: {{ holiday.types }}*</p>
     <div>
       <p>The types of the public holiday, several possible:</p>
       <ul>
-        <li>Public</li>
-        <li>Bank (Bank holiday, banks and offices are closed)</li>
-        <li>School (School holiday, schools are closed)</li>
-        <li>Authorities (Authorities are closed)</li>
-        <li>Optional (Majority of people take a day off)</li>
-        <li>Observance (Optional festivity, no paid day off)</li>
+        <li>* Public</li>
+        <li>* Bank (Bank holiday, banks and offices are closed)</li>
+        <li>* School (School holiday, schools are closed)</li>
+        <li>* Authorities (Authorities are closed)</li>
+        <li>* Optional (Majority of people take a day off)</li>
+        <li>* Observance (Optional festivity, no paid day off)</li>
       </ul>
       <router-link :to="{ name: 'holidays', params: { countryCode: holiday.countryCode } }">Go back</router-link>
     </div>
   </div>
-  <footer class="footer">
-    <div class="footerContainer">
-      <p>Copyright © GlobalHolidayTracker</p>
-    </div>
-  </footer>
 </template>
 
 <script>

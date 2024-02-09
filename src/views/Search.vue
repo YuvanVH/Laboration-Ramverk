@@ -2,13 +2,10 @@
 <template>
   <div class="container">
     <h1>Search Page</h1>
-    <SearchHoliday />
-  </div>
-  <footer class="footer">
-    <div class="footerContainer">
-      <p>Copyright © GlobalHolidayTracker</p>
+    <div class="content">
+      <SearchHoliday />
     </div>
-  </footer>
+  </div>
 </template>
 
 <script>

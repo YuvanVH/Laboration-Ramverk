@@ -2,11 +2,15 @@
 <!-- Komponent för lista över länder -->
 <template>
   <div class="container">
+    <h1>Home Page</h1>
     <h2>Country List</h2>
     <ul>
       <li v-for="country in countries" :key="country.countryCode">
         <router-link :to="{ name: 'HolidayList', params: { countryCode: country.countryCode } }">
-          {{ country.name }}
+          <div class="flags">
+            <img :src="'https://flagsapi.com/' + country.countryCode + '/flat/24.png'" alt="Flag of the country">
+            {{ country.name }}
+          </div>
         </router-link>
       </li>
     </ul>

@@ -2,14 +2,11 @@
 <template>
   <div class="container">
     <h1>Home Page</h1>
-    <CountryList />
-    <router-link to="/about">Go to About Page</router-link>
-  </div>
-  <footer class="footer">
-    <div class="footerContainer">
-      <p>Copyright © GlobalHolidayTracker</p>
+    <div class="content">
+      <CountryList />
+      <router-link to="/about">Go to About Page</router-link>
     </div>
-  </footer>
+  </div>
 </template>
 
 <script>

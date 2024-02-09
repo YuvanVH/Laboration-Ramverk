@@ -4,16 +4,24 @@
     <!-- Filter för länder -->
     <div>
       <h3>Filter Countries:</h3>
-      <label v-for="country in countries" :key="country.countryCode">
+      <label v-for="(country, index) in filteredCountries" :key="country.countryCode">
         <input type="checkbox" v-model="selectedCountries" :value="country.countryCode" @change="fetchHolidays" />
         {{ country.name }}
       </label>
-      <button @click="selectAllCountries">Select All</button> <!-- Select All knapp -->
-      <button @click="deselectAllCountries">Deselect All</button> <!-- Deselect All knapp -->
+      <div id="selectResetAll">
+        <button @click="selectAllCountries">Select All</button> <!-- Select All knapp -->
+        <button @click="resetAllCountries">Reset All</button> <!-- Reset All knapp -->
+        <label>
+          <input type="checkbox" v-model="showLess" @change="toggleShowLess"> Show Less
+        </label>
+        <label>
+          <input type="checkbox" v-model="showMore" @change="toggleShowMore"> Show More
+        </label>
+      </div>
     </div>
 
     <!-- Filter för år -->
-    <div>
+    <div id="filterYear">
       <h3>Filter Year:</h3>
       <select v-model="selectedYear" @change="fetchHolidays">
         <option v-for="year in availableYears" :key="year" :value="year">{{ year }}</option>
@@ -30,8 +38,10 @@
           ({{ holiday.countryCode }}) {{ holiday.name }} ({{ holiday.localName }}) - {{ holiday.date }}
         </router-link>
       </li>
+      <li v-if="filteredHolidays.length === 0 && selectedCountries.length > 0">No holidays to display. Please select
+        countries to
+        fetch holidays.</li>
     </ul>
-
   </div>
 </template>
 
@@ -47,6 +57,8 @@ export default {
       selectedYear: new Date().getFullYear(), // Valt år
       holidays: [], // Alla helgdagar
       searchInput: '', // Användarens sökning
+      showLess: false, // Visa mindre flaggor
+      showMore: false, // Visa fler flaggor
     };
   },
   computed: {
@@ -54,6 +66,15 @@ export default {
       return this.holidays.filter(holiday =>
         holiday.name.toLowerCase().includes(this.searchInput.toLowerCase())
       );
+    },
+    filteredCountries() {
+      if (this.showLess) {
+        return this.countries.slice(0, 5); // Visa de första 5 länderna om showLess är markerat
+      } else if (this.showMore) {
+        return this.countries; // Visa alla länder om showMore är markerat
+      } else {
+        return this.countries.slice(0, 10); // Visa de första 10 länderna som standard
+      }
     }
   },
   async mounted() {
@@ -79,6 +100,10 @@ export default {
   },
   methods: {
     async fetchHolidays() {
+      if (this.selectedCountries.length === 0) {
+        this.holidays = []; // Återställ holidays till tom array om inga länder är valda
+        return;
+      }
       this.holidays = [];
       for (const countryCode of this.selectedCountries) {
         try {
@@ -93,9 +118,20 @@ export default {
       this.selectedCountries = this.countries.map(country => country.countryCode);
       this.fetchHolidays(); // Hämta helgdagar när alla länder är valda
     },
-    deselectAllCountries() {
+    resetAllCountries() {
       this.selectedCountries = [];
       this.fetchHolidays(); // Hämta helgdagar när inga länder är valda
+    },
+    // ser till om show less eller att show more är ikryssat
+    toggleShowLess() {
+      if (this.showLess) {
+        this.showMore = false;
+      }
+    },
+    toggleShowMore() {
+      if (this.showMore) {
+        this.showLess = false;
+      }
     }
   },
 };

@@ -1,7 +1,8 @@
 <!-- vite/my-project/my-project/src/components/HolidayList.vue -->
 <template>
   <div class="container">
-    <h2>Holidays in {{ countryName }} ({{ countryCode }})</h2>
+    <h1>Holidays in {{ countryName }} ({{ countryCode }})</h1>
+    <img :src="'https://flagsapi.com/' + countryCode + '/flat/64.png'" alt="Flag of the country">
     <ul>
       <li v-for="holiday in holidays" :key="holiday.date">
         <router-link :to="{ name: 'HolidayDetails', params: { countryCode: countryCode, date: holiday.date } }">
@@ -13,11 +14,6 @@
       <router-link :to="{ name: 'CountryList' }">Go back</router-link>
     </div>
   </div>
-  <footer class="footer">
-    <div class="footerContainer">
-      <p>Copyright © GlobalHolidayTracker</p>
-    </div>
-  </footer>
 </template>
 
 <script>
