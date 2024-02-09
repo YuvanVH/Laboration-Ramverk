@@ -1,3 +1,4 @@
+<!-- ..src/App.vue -->
 <!-- App.vue -->
 <template>
   <div class="containerMeny">
@@ -6,11 +7,6 @@
     <router-link class="menyItem" to="/search">Search</router-link>
     <router-view></router-view>
   </div>
-  <footer class="footer">
-    <div class="footerContainer">
-      <p>Copyright © GlobalHolidayTracker</p>
-    </div>
-  </footer>
 </template>
 
 <script>
@@ -26,8 +22,3 @@ export default {
   },
 };
 </script>
-
-<style>
-/* Inkludera globala stilar */
-@import "../src/style.css";
-</style>
