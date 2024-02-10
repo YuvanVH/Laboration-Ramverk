@@ -23,7 +23,8 @@ För betyg VG:
     3. Minst en bevakare används: En bevakare används i komponenten HolidayDetails.vue för att övervaka förändringar i countryCode och date, och för att hämta nya helgdagar vid förändringar.
 
     4. Alla props är typsäkra: Alla props är typsäkra och datatyper anges för props i komponenten HolidayDetails.vue.
-    Minst ett custom event används: Custom events används inte direkt i din kod.
+
+    5. Minst ett custom event används: Custom events används inte direkt i din kod.
     Använda minst ett Vue
 
-    5. Router-adressparametervärde: Adressparametervärden används för att dirigera användare till specifika sidor baserat på parametrar i URL:en, vilket uppfyller kravet. Exempelvis används detta i HolidayDetails.vue för att visa detaljer om en specifik helgdag.
+    6. Router-adressparametervärde: Adressparametervärden används för att dirigera användare till specifika sidor baserat på parametrar i URL:en, vilket uppfyller kravet. Exempelvis används detta i HolidayDetails.vue för att visa detaljer om en specifik helgdag.

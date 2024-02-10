@@ -57,6 +57,12 @@ input {
   margin-right: 10px;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+
 .container ul {
   list-style-type: none;
   margin-bottom: 20px;

@@ -4,10 +4,12 @@
     <!-- Filter för länder -->
     <div>
       <h3>Filter Countries:</h3>
-      <label v-for="(country, index) in filteredCountries" :key="country.countryCode">
-        <input type="checkbox" v-model="selectedCountries" :value="country.countryCode" @change="fetchHolidays" />
-        {{ country.name }}
-      </label>
+      <div class="country-list">
+        <label v-for="(country, index) in filteredCountries" :key="country.countryCode">
+          <input type="checkbox" v-model="selectedCountries" :value="country.countryCode" @change="fetchHolidays" />
+          {{ country.name }}
+        </label>
+      </div>
       <div id="selectResetAll">
         <button @click="selectAllCountries">Select All</button> <!-- Select All knapp -->
         <button @click="resetAllCountries">Reset All</button> <!-- Reset All knapp -->
@@ -32,7 +34,7 @@
     <input v-model="searchInput" placeholder="Sök efter helgdag..." />
 
     <!-- Lista med resultat -->
-    <ul>
+    <ul class="holiday-list">
       <li v-for="holiday in filteredHolidays" :key="holiday.date">
         <router-link :to="{ name: 'HolidayDetails', params: { countryCode: holiday.countryCode, date: holiday.date } }">
           ({{ holiday.countryCode }}) {{ holiday.name }} ({{ holiday.localName }}) - {{ holiday.date }}
@@ -136,3 +138,41 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.country-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  /* Anpassa kolumnbredden */
+  gap: 10px;
+  /* Avstånd mellan kolumner */
+}
+
+#selectResetAll {
+  margin-top: 10px;
+}
+
+#selectResetAll button,
+#selectResetAll label {
+  margin-right: 10px;
+}
+
+#filterYear {
+  margin-top: 20px;
+}
+
+.holiday-list {
+  list-style: none;
+  padding: 0;
+}
+
+.holiday-list li {
+  margin-bottom: 10px;
+}
+</style>
