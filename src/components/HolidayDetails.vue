@@ -48,7 +48,7 @@ export default {
       axios
         .get(`https://date.nager.at/api/v3/publicholidays/${new Date().getFullYear()}/${this.countryCode}`)
         .then((response) => {
-          // Filter holidays based on the date
+          // Filter holidays beroende på år
           const holiday = response.data.find((h) => h.date === this.date);
           if (holiday) {
             this.holiday = holiday;

@@ -1,3 +1,4 @@
+<!-- vite/my-project/my-project/src/views/About.vue -->
 <template>
   <div class="container">
     <div class="content">
