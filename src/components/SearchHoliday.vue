@@ -45,12 +45,14 @@
         fetch holidays.</li>
     </ul>
   </div>
+  <button @click="emitCustomEvent('I did it. TADA!')">Trigger Custom Event</button>
 </template>
 
 <script>
 import axios from 'axios';
 
 export default {
+  emits: ['customEventName'], // Här placeras emits-option utanför mounted()
   data() {
     return {
       countries: [], // Alla tillgängliga länder
@@ -80,7 +82,9 @@ export default {
     }
   },
   async mounted() {
-    // Hämta tillgängliga länder
+    emits: ['customEventName'], {
+      // Hämta tillgängliga länder
+    }
     try {
       const response = await axios.get('https://date.nager.at/api/v3/AvailableCountries');
       this.countries = response.data;
@@ -134,6 +138,10 @@ export default {
       if (this.showMore) {
         this.showLess = false;
       }
+    },
+    // Custom events
+    emitCustomEvent(extraInformation) {
+      this.$emit('customEventName', extraInformation);
     }
   },
 };
@@ -174,5 +182,10 @@ export default {
 
 .holiday-list li {
   margin-bottom: 10px;
+}
+
+button {
+  padding: 5px;
+  margin-left: 20px;
 }
 </style>

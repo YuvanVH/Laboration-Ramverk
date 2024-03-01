@@ -3,7 +3,10 @@
   <div class="container">
     <h1>Search Page</h1>
     <div class="content">
-      <SearchHoliday />
+
+      <!-- custom event -->
+      <SearchHoliday @customEventName="handleCustomEvent" />
+
     </div>
   </div>
 </template>
@@ -15,5 +18,10 @@ export default {
   components: {
     SearchHoliday,
   },
+  methods: {
+    handleCustomEvent(extraInformation) {
+      console.log('Custom event taken to Serach.vue and some extra info:', extraInformation);
+    }
+  }
 };
 </script>

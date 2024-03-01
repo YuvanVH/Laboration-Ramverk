@@ -24,7 +24,7 @@ För betyg VG:
 
     4. Alla props är typsäkra: Alla props är typsäkra och datatyper anges för props i komponenten HolidayDetails.vue.
 
-    5. Minst ett custom event används: Custom events används inte direkt i din kod.
-    Använda minst ett Vue
+    5. Minst ett custom event används:
+    Koden använder ett custom event. I komponenten SearchHoliday.vue har man implementerat en metod emitCustomEvent(extraInformation) som utlöser ett custom event med namnet "customEventName" och skickar med extra information som en parameter.
 
     6. Router-adressparametervärde: Adressparametervärden används för att dirigera användare till specifika sidor baserat på parametrar i URL:en, vilket uppfyller kravet. Exempelvis används detta i HolidayDetails.vue för att visa detaljer om en specifik helgdag.
