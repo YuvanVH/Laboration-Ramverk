@@ -31,7 +31,7 @@
     </div>
 
     <!-- Sökfält för att filtrera helgdagar baserat på namn -->
-    <input v-model="searchInput" placeholder="Sök efter helgdag..." />
+    <input v-model="searchInput" placeholder="Input search here..." />
 
     <!-- Lista med resultat -->
     <ul class="holiday-list">
