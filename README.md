@@ -28,3 +28,4 @@ För betyg VG:
     Koden använder ett custom event. I komponenten SearchHoliday.vue har man implementerat en metod emitCustomEvent(extraInformation) som utlöser ett custom event med namnet "customEventName" och skickar med extra information som en parameter.
 
     6. Router-adressparametervärde: Adressparametervärden används för att dirigera användare till specifika sidor baserat på parametrar i URL:en, vilket uppfyller kravet. Exempelvis används detta i HolidayDetails.vue för att visa detaljer om en specifik helgdag.
+# global_holiday_tracker
